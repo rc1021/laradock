@@ -20,6 +20,7 @@ RUN if [ ${CHANGE_SOURCE} = true ]; then \
 ;fi
 
 RUN apk --update add wget \
+  pciutils \
   curl \
   git \
   build-base \
