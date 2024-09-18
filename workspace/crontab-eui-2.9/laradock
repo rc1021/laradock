@@ -1,0 +1,2 @@
+* * * * * laradock /usr/bin/php /var/www/api/artisan schedule:run >> /dev/null 2>&1
+* * * * * laradock /usr/bin/php /var/www/admin/artisan schedule:run >> /dev/null 2>&1
