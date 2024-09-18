@@ -18,6 +18,8 @@ if [ "$ENV_TYPE" = "down" ]; then
         command="docker-compose --env-file ./.env.ez100 down"
     elif [ "$PROJECT" = "indo" ]; then
         command="docker-compose --env-file ./.env.indo down"
+    elif [ "$PROJECT" = "ph-jp" ]; then
+        command="docker-compose --env-file ./.env.ph.japan down"    
     else
         echo "錯誤：未知的專案類型。"
         exit 1
