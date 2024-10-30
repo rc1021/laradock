@@ -5,8 +5,8 @@ ENV_TYPE=$1
 
 # Help
 if [ "$ENV_TYPE" = "--help" ]; then
-    echo "Usage: ./start.sh [ez100|indo|ph-jp|reports|vn|hk-indo] [rebuild]"
-    echo "Usage: ./start.sh down [ez100|indo|ph-jp|reports|vn|hk-indo]"
+    echo "Usage: ./start.sh [ez100|indo|ph-jp|ph|th|reports|vn|hk-indo|srv-orders] [rebuild]"
+    echo "Usage: ./start.sh down [ez100|indo|ph-jp|ph|th|reports|vn|hk-indo|srv-orders]"
     exit 1
 fi
 
@@ -20,6 +20,12 @@ if [ "$ENV_TYPE" = "down" ]; then
         command="docker compose --env-file ./.env.indo down"
     elif [ "$PROJECT" = "ph-jp" ]; then
         command="docker compose --env-file ./.env.ph.japan down"    
+    elif [ "$PROJECT" = "ph" ]; then
+        command="docker compose --env-file ./.env.ph down"    
+    elif [ "$PROJECT" = "th" ]; then
+        command="docker compose --env-file ./.env.th down"    
+    elif [ "$PROJECT" = "srv-orders" ]; then
+        command="docker compose --env-file ./.env.srv-order down"    
     elif [ "$PROJECT" = "reports" ]; then
         command="docker compose --env-file ./.env.reports down"
     elif [ "$PROJECT" = "vn" ]; then
@@ -46,6 +52,15 @@ elif [ "$ENV_TYPE" = "indo" ]; then
 elif [ "$ENV_TYPE" = "ph-jp" ]; then
     echo "正在為 ph-money-japan 環境啟動容器..."
     command="docker compose --env-file ./.env.ph.japan up -d redis mysql phpmyadmin nginx mailpit"
+elif [ "$ENV_TYPE" = "ph" ]; then
+    echo "正在為 ph-money 環境啟動容器..."
+    command="docker compose --env-file ./.env.ph up -d redis mysql phpmyadmin nginx mailpit php-worker"
+elif [ "$ENV_TYPE" = "th" ]; then
+    echo "正在為 th-money 環境啟動容器..."
+    command="docker compose --env-file ./.env.th up -d redis mysql phpmyadmin nginx mailpit php-worker"
+elif [ "$ENV_TYPE" = "srv-orders" ]; then
+    echo "正在為 srv-orders 環境啟動容器..."
+    command="docker compose --env-file ./.env.srv-order up -d redis mysql phpmyadmin nginx mailpit"
 elif [ "$ENV_TYPE" = "reports" ]; then
     echo "正在為 reports 環境啟動容器..."
     command="docker compose --env-file ./.env.reports up -d redis mysql phpmyadmin nginx mailpit"

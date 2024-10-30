@@ -203,6 +203,7 @@ services:
         - "${WORKSPACE_VUE_CLI_UI_HOST_PORT}:8000"
         - "${WORKSPACE_ANGULAR_CLI_SERVE_HOST_PORT}:4200"
         - "${WORKSPACE_VITE_PORT}:5173"
+        - "9004"
       tty: true
       environment:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
@@ -320,6 +321,7 @@ services:
         - docker-in-docker:/certs/client
       expose:
         - "9000"
+        - "9003"
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       environment:
@@ -390,7 +392,7 @@ services:
           - ORACLE_INSTANT_CLIENT_MINOR=${ORACLE_INSTANT_CLIENT_MINOR}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
-        - ./php-worker/supervisord.d:/etc/supervisord.d
+        - ${PHP_WORKER_SUPERVISORD_PATH}:/etc/supervisord.d
       depends_on:
         - workspace
       environment:

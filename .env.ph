@@ -5,7 +5,7 @@
 ### Paths #################################################
 
 # Point to the path of your applications code on your host
-APP_CODE_PATH_HOST=../eui_hk_indo
+APP_CODE_PATH_HOST=../eui_phil
 
 # Point to where the `APP_CODE_PATH_HOST` should be in the container
 APP_CODE_PATH_CONTAINER=/var/www
@@ -14,7 +14,8 @@ APP_CODE_PATH_CONTAINER=/var/www
 APP_CODE_CONTAINER_FLAG=:cached
 
 # Choose storage path on your machine. For all storage systems
-DATA_PATH_HOST=./.laradock/data-hk-indo
+# DATA_PATH_HOST=./.laradock/data-phil
+DATA_PATH_HOST=./.laradock/data-phil-74
 
 ### Drivers ################################################
 
@@ -33,12 +34,14 @@ COMPOSE_FILE=docker-compose.yml
 COMPOSE_PATH_SEPARATOR=:
 
 # Define the prefix of container names. This is useful if you have multiple projects that use laradock to have separate containers per project.
+# COMPOSE_PROJECT_NAME=phpweb72
 COMPOSE_PROJECT_NAME=phpweb74
 
 ### PHP Version ###########################################
 
 # Select a PHP version of the Workspace and PHP-FPM containers (Does not apply to HHVM).
 # Accepted values: 8.3 - 8.2 - 8.1 - 8.0 - 7.4 - 7.3 - 7.2 - 7.1 - 7.0 - 5.6
+# PHP_VERSION=7.2
 PHP_VERSION=7.4
 
 ### Phalcon Version ###########################################
@@ -348,6 +351,7 @@ PHP_WORKER_INSTALL_EVENT=false
 PHP_WORKER_INSTALL_INTL=true
 PHP_WORKER_INSTALL_POPPLER_UTILS=false
 PHP_WORKER_SUPERVISORD_PATH=./php-worker/2.9/supervisord.d
+PHP_WORKER_SUPERVISORD_PATH=./php-worker/2.9/supervisord.d
 
 PHP_WORKER_PUID=1000
 PHP_WORKER_PGID=1000
@@ -409,7 +413,7 @@ APACHE_FOR_MAC_M1=false
 
 ### MYSQL #################################################
 
-MYSQL_VERSION=latest
+MYSQL_VERSION=5.7
 MYSQL_DATABASE=default
 MYSQL_USER=default
 MYSQL_PASSWORD=secret
